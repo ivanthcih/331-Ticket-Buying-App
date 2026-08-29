@@ -168,4 +168,48 @@ public class GenericQueueSpecTest {
         assertTrue(q.contains("Alexandra"));
         assertEquals(new GenericQueue.Entry<>("Alexandra", "How do I write within while loops?"), q.getEntry("Alexandra"));
     }
+
+    @Test
+    public void testRemoveNotInQueue() {
+        GenericQueue<String> q = new GenericQueueImpl<>();
+        q.enqueue("Alex", "Can I eat here?");
+        assertFalse(q.remove("NotInQueue"));
+        assertEquals(1, q.size());
+    }
+    
+    @Test
+    public void testRemoveMiddleReindexesRemaining() {
+        GenericQueue<String> q = new GenericQueueImpl<>();
+        q.enqueue("Alex", "Can I eat here?");
+        q.enqueue("James", "Where can I expect to find my midterm results?");
+        q.enqueue("Alyssa", "How do I write within while loops?");
+        q.remove("James"); // exactly one trailing entry ("Alyssa") must reindex
+        assertEquals(1, q.indexOfName("Alyssa"));
+    }
+    
+    @Test
+    public void testInsertAfterMiddleReindexesRemaining() {
+        GenericQueue<String> q = new GenericQueueImpl<>();
+        q.enqueue("Alex", "Can I eat here?");
+        q.enqueue("James", "Where can I expect to find my midterm results?");
+        q.insertAfter("Alex", "Alyssa", "How do I write within while loops?"); // "James" shifts by exactly one
+        assertEquals(2, q.indexOfName("James"));
+    }
+    
+    @Test
+    public void testIndexOfNameNotInQueue() {
+        GenericQueue<String> q = new GenericQueueImpl<>();
+        q.enqueue("Alex", "Can I eat here?");
+        assertEquals(-1, q.indexOfName("NotInQueue"));
+    }
+    
+    @Test
+    public void testRenameSameName() {
+        GenericQueue<String> q = new GenericQueueImpl<>();
+        q.enqueue("Alex", "Can I eat here?");
+        q.rename("Alex", "Alex");
+        assertEquals(1, q.size());
+        assertTrue(q.contains("Alex"));
+        assertEquals(new GenericQueue.Entry<>("Alex", "Can I eat here?"), q.getEntry("Alex"));
+    }
 }
