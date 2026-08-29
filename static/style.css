@@ -1,0 +1,25 @@
+/* You can put any custom styles for your app here.
+ *
+ * This file is referenced via the <link> tag in index.html.
+ *
+ * This file is not graded and custom styles are not required.
+ */
+
+/* Highlight the result-of-last-round message (Correct./Wrong./Late.) so it
+ * stands out from the surrounding prose. The :not(:empty) selector means
+ * the box only appears when the message has content, so there is no empty
+ * box on first page load. The color comes from a per-result class
+ * (correct/wrong/late) that index.js sets based on the kind field in the
+ * server's JSON response. */
+#msg:not(:empty) {
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    border: 1px solid #888;
+    border-radius: 4px;
+    background: #f0f0f0;
+    font-weight: bold;
+    width: fit-content;
+}
+#msg.correct { background: #d4edda; border-color: #28a745; }
+#msg.wrong   { background: #f8d7da; border-color: #dc3545; }
+#msg.late    { background: #fff3cd; border-color: #ffc107; }

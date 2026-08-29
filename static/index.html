@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Buy Tickets</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <h1>Buy Tickets</h1>
+
+        <!-- navigation -->
+        <nav>
+            <button type="button" id="nav-queue">Queue</button>
+            <button type="button" id="nav-profile">Profile</button>
+            <button type="button" id="nav-admin">Admin</button>
+        </nav>
+
+        <!-- queue page -->
+        <div id="page-queue">
+            <h2>Join the queue</h2>
+            <p id="queue-msg" hidden></p> <!-- purchase message -->
+            <label>Name: <input type="text" id="join-name"> </label>
+            <label>How many tickets to reserve? <input type="number" id="join-quantity" value="1" min="1"></label>
+            <button type="button" id="join-btn">Join</button>
+
+            <p>Already in line? Type your name and click <button type="button" id="find-btn">Find my spot</button></p>
+        </div>
+
+        <!-- waiting page / in queue page-->
+        <div id="page-waiting" hidden>
+            <h2>You're in the queue</h2>
+            <p>You are <strong>#<span id="position-queue"></span></strong> in line.</p>
+            <p>You've been waiting <strong><span id="waiting-time"></span></strong> second(s).</p>
+            <p>You are trying to reserve <strong><span id="quantity-queue"></span></strong> ticket(s).</p>
+            <label>Change number of reserved tickets to:
+                <input type="number" id="wait-new-quantity" min="1">
+            </label>
+            <button type="button" id="wait-adjust-btn">Adjust</button>
+            <button type="button" id="wait-refresh-btn">Refresh</button>
+            <button type="button" id="wait-leave-btn">Leave</button>
+        </div>
+
+        <!-- shopping center page -->
+        <div id="page-shopping-center" hidden>
+            <h2>Shopping Center<span id="nav-name"></span></h2>
+            <p>You have <strong><span id="shop-deadline"></span></strong> second(s) to purchase.</p>
+            <p>You reserved <strong><span id="shop-quantity"></span></strong> ticket(s).</p>
+            <label>Quantity: <input type="number" id="shop-purchase-quantity" value="1" min="1"></label>
+            <button type="button" id="shop-purchase-btn">Purchase</button>
+            <button type="button" id="shop-refresh-btn">Refresh</button>
+            <button type="button" id="shop-leave-btn">Leave</button>
+        </div>
+
+        <!-- profile page -->
+        <div id="page-profile" hidden>
+            <h2>Profile</h2>
+            <label>Name: <input type="text" id="lookup-name"> </label>
+            <button type="button" id="lookup-btn">Look up</button>
+
+            <div id="profile-info" hidden>
+                <p><strong>Name:</strong> <span id="found-name"></span></p>
+                <h3>Past purchases</h3>
+                <ol id="profile-purchases"></ol>
+
+                <h3>Change your name</h3>
+                <label>New name: <input type="text" id="change-name"> </label>
+                <button type="button" id="change-btn">Change</button>
+            </div>
+        </div>
+
+        <!-- admin page -->
+        <div id="page-admin" hidden>
+            <h2>Admin</h2>
+            <p>The shopping center has a total capacity of <strong><span id="admin-total-capacity"></span></strong> ticket(s).</p>
+            <p>Currently, there are <strong><span id="admin-used-capacity"></span></strong> tickets reserved in the shopping center, leaving <strong><span id="admin-available-capacity"></span></strong> tickets available.</p>
+            <p>Waiting line: <strong><span id="admin-queue-length"></span></strong> people / <strong><span id="admin-queue-tickets"></span></strong> ticket(s) wanted.</p>
+            <p>Next up: <strong><span id="admin-next"></span></strong></p>
+
+            <h3>Insert someone into the line</h3>
+            <label>New name: <input type="text" id="admin-insert-name"></label>
+            <label>After: <input type="text" id="admin-insert-after"></label>
+            <label>Wants: <input type="number" id="admin-insert-quantity" value="1" min="1"></label>
+            <button type="button" id="admin-insert-btn">Insert</button>
+            <button type="button" id="admin-refresh-btn">Refresh</button>
+        </div>
+
+        <script src="/index.js"></script>
+    </body>
+</html>
+
