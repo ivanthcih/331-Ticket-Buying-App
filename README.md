@@ -11,7 +11,7 @@ The app simulates buying tickets to a limited-capacity venue (the "shopping cent
 6. Users can view a profile page with purchase history and rename themselves.
 7. An open admin dashboard shows live queue length, capacity usage, and the next person in line, and supports inserting a new waiter at an arbitrary position in the queue.
 
-## Key Engineering Highlights
+## Key Highlights
 - **Custom generic data structure** — Designed and implemented `GenericQueue<V>`, a key-value queue supporting name-based lookup, insertion, removal, and reordering, with explicit **Big-O time and space complexity requirements** enforced per method (O(1), O(log n), and O(n) operations).
 - **Rigorous specification testing** — Wrote a specification-based test suite that must pass against any correct implementation of the interface, exercising the queue with multiple generic value types (`GenericQueue<String>`, `GenericQueue<Integer>`).
 - **Correctness invariants** — Maintained abstraction functions (AF) and representation invariants (RI) with a `checkRep()` method to guard internal consistency as the implementation evolved.
