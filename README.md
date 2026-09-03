@@ -1,4 +1,5 @@
-# 331-HW7-Ticket-Buying-App
+# Ticket-Buying-App
+From CSE 331
 A full-stack ticket queueing and purchasing system built with a Java/Javalin backend and a vanilla JavaScript frontend.
 
 ## Overview
